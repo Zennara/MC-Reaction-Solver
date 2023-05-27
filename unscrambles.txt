@@ -3,23 +3,24 @@ armorer
 clay
 looting
 slab
-the word water
-e correct answer 33
-rd fletcher
-rd carpet
-rd blackstone
-rd cleric
+water
+fletcher
+carpet
+blackstone
+cleric
 jukebox
-rd wild
+wild
 squid
-rd minecart
-ect answer 161
-correct answer 133
+minecart
 orchid
 melon
-he correct answer 84
-rd ghast
+ghast
 llama
- the word cartographer
- word bonemeal
-ect answer 128
+cartographer
+bonemeal
+strider
+shulker
+piercing
+prismarine
+husk
+target

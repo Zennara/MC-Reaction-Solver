@@ -2,6 +2,7 @@ import time
 import os
 import pyautogui
 import random
+import re
 
 log_file_path = os.getenv("APPDATA") + "/.minecraft/logs/latest.log"
 
@@ -29,16 +30,51 @@ def read_chat_log():
                 if "Reaction » " in chat_message:
                     after_reaction = chat_message.split("Reaction » ", 1)[1]
 
-                    # Reaction » Unscramble the word estt for a random prize!
+                    # Reaction » Unscramble the word htasg for a random prize!
                     if after_reaction.startswith("Unscramble"):
-                        pass
+
+                        def extract_string(text, start_string, end_string):
+                            pattern = rf"{re.escape(start_string)}(.*?){re.escape(end_string)}"
+                            match = re.search(pattern, text)
+                            if match:
+                                return match.group(1)
+                            return None
+
+                        def check_string_match(file_path, search_string):
+                            with open(file_path, 'r') as file:
+                                for line in file:
+                                    line = line.strip()
+                                    if sorted(search_string) == sorted(line) and len(search_string) == len(line):
+                                        return line
+                            return None
+
+                        # Example usage
+                        unscrambles_file = 'unscrambles.txt'
+                        start_string = "Unscramble the word "
+                        end_string = " for a random prize!"
+
+                        # Extract the string between start and end strings from the provided string
+                        extracted_string = extract_string(after_reaction, start_string, end_string)
+
+                        if extracted_string:
+                            print("Extracted string:", extracted_string)
+
+                            # Check if the characters of the extracted string match any line in unscrambles file
+                            matched_word = check_string_match(unscrambles_file, extracted_string)
+
+                            if matched_word:
+                                #type_macro(matched_word, 1)
+                            else:
+                                print("No matching word found in the unscrambles file")
+                        else:
+                            print("No matching string found in the provided string")
 
                     # log unscramble words
                     if LOG_UNSCRAMBLES:
                         start_string = " unscrambled the word "
                         end_string = " in "
 
-                        if after_reaction.contains(start_string) and after_reaction.contains(end_string):
+                        if start_string in after_reaction and end_string in after_reaction:
                             start_index = after_reaction.find(start_string) + len(start_string)
                             end_index = after_reaction.find(end_string)
 
@@ -94,11 +130,14 @@ def type_macro(text, type):
     # Generate a random delay between 1 and 1.5 seconds
     match type:
         case 1:
-            delay = random.uniform(1, 1.5)
+            # unscramble
+            delay = random.uniform(1.25, 1.75)
         case 2:
+            # type word
             delay = random.uniform(1, 1.5)
         case 3:
-            delay = random.uniform(2, 3.5)
+            # solve expression
+            delay = random.uniform(1.5, 2)
 
     # Sleep for the random delay
     time.sleep(delay)
