@@ -38,28 +38,29 @@ def read_chat_log():
                         start_string = " unscrambled the word "
                         end_string = " in "
 
-                        start_index = after_reaction.find(start_string) + len(start_string)
-                        end_index = after_reaction.find(end_string)
+                        if after_reaction.contains(start_string) and after_reaction.contains(end_string):
+                            start_index = after_reaction.find(start_string) + len(start_string)
+                            end_index = after_reaction.find(end_string)
 
-                        if start_index != -1 and end_index != -1:
-                            logged_word = after_reaction[start_index:end_index]
-                            if not os.path.isfile('unscrambles.txt'):
-                                # Create the file if it doesn't exist
-                                open('unscrambles.txt', 'a').close()
+                            if start_index != -1 and end_index != -1:
+                                logged_word = after_reaction[start_index:end_index]
+                                if not os.path.isfile('unscrambles.txt'):
+                                    # Create the file if it doesn't exist
+                                    open('unscrambles.txt', 'a').close()
 
-                            # Read the contents of the text file
-                            with open('unscrambles.txt', 'r') as file:
-                                lines = file.readlines()
+                                # Read the contents of the text file
+                                with open('unscrambles.txt', 'r') as file:
+                                    lines = file.readlines()
 
-                            # Check if the word exists in the file
-                            if logged_word + '\n' not in lines:
-                                # Append the word to a new line in the file
-                                with open('unscrambles.txt', 'a') as file:
-                                    file.write(logged_word + '\n')
+                                # Check if the word exists in the file
+                                if logged_word + '\n' not in lines:
+                                    # Append the word to a new line in the file
+                                    with open('unscrambles.txt', 'a') as file:
+                                        file.write(logged_word + '\n')
 
-                                print(f"The word '{logged_word}' was added to the file.")
-                            else:
-                                print(f"The word '{logged_word}' already exists in the file.")
+                                    print(f"The word '{logged_word}' was added to the file.")
+                                else:
+                                    print(f"The word '{logged_word}' already exists in the file.")
 
                     # Reaction » Type the word TEST for a random prize!
                     if after_reaction.startswith("Type"):
@@ -71,7 +72,7 @@ def read_chat_log():
 
                         if start_index != -1 and end_index != -1:
                             desired_word = after_reaction[start_index:end_index]
-                            type_macro(desired_word)
+                            type_macro(desired_word, 2)
 
                     # Reaction » Solve the expression 100 - 50 for a random prize!
                     if after_reaction.startswith("Solve"):
@@ -85,12 +86,19 @@ def read_chat_log():
                             expression = after_reaction[start_index:end_index]
                             expression = expression.replace('x', '*')
                             result = eval(expression)
-                            type_macro(str(result))
+                            type_macro(str(result), 3)
 
 
-def type_macro(text):
+def type_macro(text, type):
+
     # Generate a random delay between 1 and 1.5 seconds
-    delay = random.uniform(1, 1.5)
+    match type:
+        case 1:
+            delay = random.uniform(1, 1.5)
+        case 2:
+            delay = random.uniform(1, 1.5)
+        case 3:
+            delay = random.uniform(2, 3.5)
 
     # Sleep for the random delay
     time.sleep(delay)
