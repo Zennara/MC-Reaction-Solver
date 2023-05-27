@@ -63,7 +63,7 @@ def read_chat_log():
                             matched_word = check_string_match(unscrambles_file, extracted_string)
 
                             if matched_word:
-                                #type_macro(matched_word, 1)
+                                type_macro(matched_word, 1)
                             else:
                                 print("No matching word found in the unscrambles file")
                         else:
