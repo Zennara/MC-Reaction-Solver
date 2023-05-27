@@ -1,0 +1,4 @@
+fish
+armorer
+clay
+looting
