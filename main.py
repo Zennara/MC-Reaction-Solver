@@ -2,7 +2,6 @@ import time
 import os
 import pyautogui
 import random
-import pygetwindow
 
 log_file_path = os.getenv("APPDATA") + "/.minecraft/logs/latest.log"
 
@@ -36,7 +35,7 @@ def read_chat_log():
 
                     # log unscramble words
                     if LOG_UNSCRAMBLES:
-                        start_string = "unscrambled the word "
+                        start_string = " unscrambled the word "
                         end_string = " in "
 
                         start_index = after_reaction.find(start_string) + len(start_string)
@@ -108,7 +107,7 @@ def type_macro(text):
         else:
             print("Minecraft window not found")
 
-    # type the answer
+    # Type the answer
     pyautogui.press('t')
     pyautogui.typewrite(text)
     pyautogui.press('enter')
