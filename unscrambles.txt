@@ -24,3 +24,15 @@ piercing
 prismarine
 husk
 target
+anvil
+grove
+cocoa
+potatoes
+dolphin
+beehive
+poppy
+pillar
+mason
+swamp
+glowsquid
+skyblock
