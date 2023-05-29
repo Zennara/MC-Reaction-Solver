@@ -19,4 +19,4 @@ A simple Python program to automatically solve word challenges on various Minecr
 - `TYPE_MAX_DELAY` - **minimum** delay for type challenges in seconds
 - `SOLVE_MIN_DELAY` - **minimum** delay for solve challenges in seconds
 - `SOLVE_MAX_DELAY` - **minimum** delay for solve challenges in seconds
-- `SOLVE_MULTIPLY_MULTIPLIER` - The `min` and `max` delay for solve expression challenges by this number
+- `SOLVE_MULTIPLY_MULTIPLIER` - The `min` and `max` delay for solve expression challenges is multiplied by this number
