@@ -36,3 +36,14 @@ mason
 swamp
 glowsquid
 skyblock
+sponge
+evoker
+mushroom
+bowl
+cod
+carrots
+scaffolding
+silverfish
+sheep
+plains
+flint

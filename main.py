@@ -10,6 +10,14 @@ log_file_path = os.getenv("APPDATA") + "/.minecraft/logs/latest.log"
 SWITCH_WINDOW = True
 LOG_UNSCRAMBLES = True
 
+# delays
+UNSCRAMBLE_MIN_DELAY = 2
+UNSCRAMBLE_MAX_DELAY = 3
+TYPE_MIN_DELAY = 1
+TYPE_MAX_DELAY = 1.2
+SOLVE_MIN_DELAY = 2
+SOLVE_MAX_DELAY = 2.5
+
 # disable failsafe (allow mouse movement)
 pyautogui.FAILSAFE = False
 
@@ -131,13 +139,13 @@ def type_macro(text, type):
     match type:
         case 1:
             # unscramble
-            delay = random.uniform(1.25, 1.75)
+            delay = random.uniform(UNSCRAMBLE_MIN_DELAY, UNSCRAMBLE_MAX_DELAY)
         case 2:
             # type word
-            delay = random.uniform(1, 1.5)
+            delay = random.uniform(TYPE_MIN_DELAY, TYPE_MAX_DELAY)
         case 3:
             # solve expression
-            delay = random.uniform(1.5, 2)
+            delay = random.uniform(SOLVE_MIN_DELAY, SOLVE_MAX_DELAY)
 
     # Sleep for the random delay
     time.sleep(delay)
