@@ -55,3 +55,7 @@ composter
 totem
 shield
 lure
+impaling
+terracotta
+steel
+firework
