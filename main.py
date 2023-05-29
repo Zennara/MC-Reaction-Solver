@@ -17,6 +17,7 @@ TYPE_MIN_DELAY = 1
 TYPE_MAX_DELAY = 1.2
 SOLVE_MIN_DELAY = 2
 SOLVE_MAX_DELAY = 2.5
+SOLVE_MULTIPLY_MULTIPLIER = 2
 
 # disable failsafe (allow mouse movement)
 pyautogui.FAILSAFE = False
@@ -130,7 +131,10 @@ def read_chat_log():
                             expression = after_reaction[start_index:end_index]
                             expression = expression.replace('x', '*')
                             result = eval(expression)
-                            type_macro(str(result), 3)
+                            if '*' in expression:
+                                type_macro(str(result), 33)
+                            else:
+                                type_macro(str(result), 3)
 
 
 def type_macro(text, type):
@@ -146,6 +150,9 @@ def type_macro(text, type):
         case 3:
             # solve expression
             delay = random.uniform(SOLVE_MIN_DELAY, SOLVE_MAX_DELAY)
+        case 33:
+            # solve expression + multiplier
+            delay = random.uniform(SOLVE_MIN_DELAY*SOLVE_MULTIPLY_MULTIPLIER, SOLVE_MAX_DELAY*SOLVE_MULTIPLY_MULTIPLIER)
 
     # Sleep for the random delay
     time.sleep(delay)

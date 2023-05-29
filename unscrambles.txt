@@ -47,3 +47,11 @@ silverfish
 sheep
 plains
 flint
+forest
+barrier
+infinity
+beacon
+composter
+totem
+shield
+lure
