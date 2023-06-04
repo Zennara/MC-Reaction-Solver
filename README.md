@@ -1,6 +1,6 @@
 # MC-Reaction-Solver
 ## Designed for InsanityCraft
-A simple Python program to automatically solve word challenges on various Minecraft servers.
+A simple Python program to automatically solve word challenges on various Minecraft servers. Practically undetectable, and especially, free.
 
 ## Supported Challenges
 - `Type Word` Challenges
