@@ -21,3 +21,10 @@ A simple Python program to automatically solve word challenges on various Minecr
 - `SOLVE_MIN_DELAY` - **minimum** delay for solve challenges in seconds
 - `SOLVE_MAX_DELAY` - **minimum** delay for solve challenges in seconds
 - `SOLVE_MULTIPLY_MULTIPLIER` - The `min` and `max` delay for solve expression challenges is multiplied by this number
+
+# How to Install
+- download the repository
+- check you have the latest version of Python installed
+- Opem cmd in that directory you installed
+- run `py main.py`
+- success
